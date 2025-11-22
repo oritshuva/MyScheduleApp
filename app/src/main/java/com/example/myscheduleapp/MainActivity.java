@@ -1,11 +1,12 @@
 package com.example.myscheduleapp;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.Fragment;
 
 import android.os.Bundle;
 
-import com.example.myscheduleapp.ui.LoginFragment;
+import com.example.myscheduleapp.R;
+import com.example.myscheduleapp.ui.HomeFragment;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -14,10 +15,17 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // טוען את מסך ההתחברות (LoginFragment)
-        FragmentManager fm = getSupportFragmentManager();
-        fm.beginTransaction()
-                .replace(R.id.fragment_container, new LoginFragment())
+        // אם זו הפתיחה הראשונה – נטען את מסך הבית
+        if (savedInstanceState == null) {
+            loadFragment(new HomeFragment());
+        }
+    }
+
+    // פונקציה לטעינת פרגמנט למסך
+    public void loadFragment(Fragment fragment) {
+        getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.fragmentContainer, fragment)
                 .commit();
     }
 }
