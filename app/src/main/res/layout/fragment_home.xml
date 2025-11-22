@@ -1,100 +1,67 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:gravity="center_horizontal"
-    android:padding="24dp"
-    android:background="@android:color/white">
+    android:padding="24dp">
 
-    <!--  עליונה -->
-    <TextView
-        android:id="@+id/welcomeText"
-        android:text="welcom!!"
-        android:textSize="24sp"
-        android:textStyle="italic"
-        android:textColor="#37474F"
-        android:fontFamily="serif"
-        android:layout_marginBottom="20dp"
-        android:gravity="center"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
-
-    <!-- כפתור מערכת שעות -->
-    <Button
-        android:id="@+id/btnSchedule"
-        android:text="schedule 📅"
-        android:textSize="20sp"
-        android:textColor="#FFFFFF"
-        android:backgroundTint="#3F51B5"
-        android:layout_width="match_parent"
-        android:layout_height="80dp"
-        android:layout_marginTop="10dp" />
-
-    <!-- כפתור משימות -->
-    <Button
-        android:id="@+id/btnTasks"
-        android:text="you tasks📝 "
-        android:textSize="20sp"
-        android:textColor="#FFFFFF"
-        android:backgroundTint="#4CAF50"
-        android:layout_width="match_parent"
-        android:layout_height="80dp"
-        android:layout_marginTop="10dp" />
-
-    <!-- כפתור תזכורות -->
-    <Button
-        android:id="@+id/btnReminders"
-        android:text="reminders ⏰ "
-        android:textSize="20sp"
-        android:textColor="#FFFFFF"
-        android:backgroundTint="#FFC107"
-        android:layout_width="match_parent"
-        android:layout_height="80dp"
-        android:layout_marginTop="10dp" />
-
-    <!-- כפתור הודעות -->
-    <Button
-        android:id="@+id/btnMessages"
-        android:text="masseges 💬 "
-        android:textSize="20sp"
-        android:textColor="#FFFFFF"
-        android:backgroundTint="#009688"
-        android:layout_width="match_parent"
-        android:layout_height="80dp"
-        android:layout_marginTop="10dp" />
-
-    <!-- כפתור שיעורים פרטיים -->
-    <Button
-        android:id="@+id/btnPrivateLessons"
-        android:text="🎓 שיעורים פרטיים"
-        android:textSize="20sp"
-        android:textColor="#FFFFFF"
-        android:backgroundTint="#9C27B0"
-        android:layout_width="match_parent"
-        android:layout_height="80dp"
-        android:layout_marginTop="10dp" />
-
-    <!-- כפתור הגדרות -->
-    <Button
-        android:id="@+id/btnSettings"
-        android:text="⚙️ הגדרות"
-        android:textSize="20sp"
-        android:textColor="#FFFFFF"
-        android:backgroundTint="#F44336"
-        android:layout_width="match_parent"
-        android:layout_height="80dp"
-        android:layout_marginTop="10dp" />
-
-    <!-- כפתור התנתקות -->
-    <Button
-        android:id="@+id/logoutButton"
-        android:text="🚪 התנתק"
-        android:textSize="18sp"
-        android:textColor="#000000"
-        android:backgroundTint="#CFD8DC"
+    <LinearLayout
+        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp" />
+        android:gravity="center_horizontal">
 
-</LinearLayout>
+        <TextView
+            android:id="@+id/homeTitle"
+            android:text="ברוך הבא!"
+            android:textSize="26sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="24dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <Button
+            android:id="@+id/btnSchedule"
+            android:text="מערכת שעות"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"/>
+
+        <Button
+            android:id="@+id/btnTasks"
+            android:text="משימות"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"/>
+
+        <Button
+            android:id="@+id/btnReminders"
+            android:text="תזכורות"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"/>
+
+        <Button
+            android:id="@+id/btnInvitations"
+            android:text="הזמנות"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"/>
+
+        <Button
+            android:id="@+id/btnSettings"
+            android:text="הגדרות"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"/>
+
+        <Button
+            android:id="@+id/btnLogout"
+            android:text="התנתקות"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#FF4444"
+            android:textColor="@android:color/white"
+            android:layout_marginTop="20dp"/>
+
+    </LinearLayout>
+</ScrollView>

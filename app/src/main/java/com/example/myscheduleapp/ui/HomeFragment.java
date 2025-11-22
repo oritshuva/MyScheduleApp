@@ -1,72 +1,53 @@
 package com.example.myscheduleapp.ui;
 
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.TextView;
-import android.widget.Toast;
 
-import androidx.fragment.app.FragmentTransaction;
-
+import com.example.myscheduleapp.MainActivity;
 import com.example.myscheduleapp.R;
 
 public class HomeFragment extends Fragment {
-
-    TextView welcomeText;
-    Button btnSchedule, btnTasks, btnReminders, btnMessages, btnSettings, logoutButton;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        // קישור בין קובץ ה-XML לקוד
+        // מחבר את ה-XML לקוד Java
         View view = inflater.inflate(R.layout.fragment_home, container, false);
 
-        // קישור רכיבים לפי ה-ID שלהם
-        welcomeText = view.findViewById(R.id.welcomeText);
-        btnSchedule = view.findViewById(R.id.btnSchedule);
-        btnTasks = view.findViewById(R.id.btnTasks);
-        btnReminders = view.findViewById(R.id.btnReminders);
-        btnMessages = view.findViewById(R.id.btnMessages);
-        btnSettings = view.findViewById(R.id.btnSettings);
-        logoutButton = view.findViewById(R.id.logoutButton);
+        // חיבור כפתורים ל-Java לפי ID
+        Button btnSchedule = view.findViewById(R.id.btnSchedule);
+        Button btnTasks = view.findViewById(R.id.btnTasks);
+        Button btnReminders = view.findViewById(R.id.btnReminders);
+        Button btnInvitations = view.findViewById(R.id.btnInvitations);
+        Button btnSettings = view.findViewById(R.id.btnSettings);
+        Button btnLogout = view.findViewById(R.id.btnLogout);
 
-        // שינוי טקסט פתיחה
-        welcomeText.setText("ברוך הבא למערכת היומית שלך!");
+        // מעברים למסכים אחרים דרך MainActivity
+        btnSchedule.setOnClickListener(v ->
+                ((MainActivity) requireActivity()).loadFragment(new ScheduleFragment()));
 
-        // ניווט למסכים אחרים
-        btnSchedule.setOnClickListener(v -> openFragment(new ScheduleFragment()));
-        btnTasks.setOnClickListener(v -> openFragment(new TasksFragment()));
-        btnReminders.setOnClickListener(v -> openFragment(new RemindersFragment()));
-        btnMessages.setOnClickListener(v -> openFragment(new MessagesFragment()));
-        btnSettings.setOnClickListener(v -> openFragment(new SettingsFragment()));
-        logoutButton.setOnClickListener(v -> {
-            // מחיקת מצב התחברות
-            SharedPreferences prefs = requireActivity().getSharedPreferences("MyAppPrefs", getContext().MODE_PRIVATE);
-            SharedPreferences.Editor editor = prefs.edit();
-            editor.putBoolean("isLoggedIn", false);
-            editor.apply();
+        btnTasks.setOnClickListener(v ->
+                ((MainActivity) requireActivity()).loadFragment(new TasksFragment()));
 
-            // הודעת הצלחה
-            Toast.makeText(getContext(), "התנתקת בהצלחה!", Toast.LENGTH_SHORT).show();
+        btnReminders.setOnClickListener(v ->
+                ((MainActivity) requireActivity()).loadFragment(new RemindersFragment()));
 
-            // מעבר למסך ההתחברות
-            // openFragment(new LoginFragment());
+        btnInvitations.setOnClickListener(v ->
+                ((MainActivity) requireActivity()).loadFragment(new InvitationsFragment()));
+
+        btnSettings.setOnClickListener(v ->
+                ((MainActivity) requireActivity()).loadFragment(new SettingsFragment()));
+
+        // כפתור התנתקות
+        btnLogout.setOnClickListener(v -> {
+            requireActivity().finish();  // מסיים את MainActivity
         });
 
-
         return view;
-    }
-
-    // פונקציה שמבצעת את המעבר בפועל בין המסכים
-    private void openFragment(Fragment fragment) {
-        FragmentTransaction transaction = getParentFragmentManager().beginTransaction();
-        transaction.replace(R.id.fragment_container, fragment);
-        transaction.addToBackStack(null); // מאפשר לחזור אחורה
-        transaction.commit();
     }
 }
